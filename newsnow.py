@@ -2,6 +2,9 @@ from bs4 import BeautifulSoup
 from urllib.request import urlopen, Request
 import  webbrowser
 import re
+from pathlib import Path
+import os
+import time
 
 def economist():
     url = 'https://www.economist.com/'
@@ -17,9 +20,9 @@ def economist():
             main_links.append(link)
 
 
-    html_economist = ("""
+    html_economist = (f"""
     <h1>
-    <img src="pngegg.png" alt="The Economist" width="1066" height="327">
+    <img src="{Path().parent.absolute()}/logos/economist.png" alt="The Economist" width="1066" height="327">
     </h1>
     <div class="link-group">
     """)
@@ -33,9 +36,9 @@ def economist():
 
 def smh():
 
-    html_smh = """</div> 
+    html_smh = f"""</div> 
     <h1 class="smh-head">
-    <img src="smh-logo_New.png" alt="Sydney Mroning Herald" width="1184" height="182">
+    <img src=\"{Path().parent.absolute()}/logos/smh.png" alt="Sydney Morning Herald" width="1184" height="182">
     </h1>
     <div class="link-group">
     """
@@ -70,10 +73,10 @@ def smh():
     return html_smh
 
 def file_open():
-    html_begining = """
+    html_begining = f"""
     <html>
     <head>
-        <link rel="stylesheet" href="newsrn.css">
+        <link rel="stylesheet" href="{Path().parent.absolute()}/webFiles/index.css">
     </head>
     <body>"""
 
@@ -85,7 +88,11 @@ def file_close():
     return html_close
 
 if __name__ == '__main__':
-    html_file = open('/home/dan/Documents/python_projects/newsrn/newsrn.html', 'w')
+    html_file = open(f'{Path().parent.absolute()}/webFiles/index.html', 'w')
     html_file.write(file_open() + smh() + economist() + file_close())
     html_file.close()
-    webbrowser.open_new_tab('/home/dan/Documents/python_projects/newsrn/newsrn.html')
+    webbrowser.open_new_tab(f'{Path().parent.absolute()}/webFiles/index.html')
+    time.sleep(5)
+    os.remove(f'{Path().parent.absolute()}/webFiles/index.html')
+
+    
