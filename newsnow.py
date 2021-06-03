@@ -19,7 +19,7 @@ def economist():
 
     html_economist = ("""
     <h1>
-    <img src="pngegg.png" alt="The Economist" width="1066" height="327">
+    <img src="/logos/economist.png" alt="The Economist" width="1066" height="327">
     </h1>
     <div class="link-group">
     """)
@@ -35,7 +35,7 @@ def smh():
 
     html_smh = """</div> 
     <h1 class="smh-head">
-    <img src="smh-logo_New.png" alt="Sydney Mroning Herald" width="1184" height="182">
+    <img src="/logos/smh.png" alt="Sydney Mroning Herald" width="1184" height="182">
     </h1>
     <div class="link-group">
     """
@@ -73,7 +73,7 @@ def file_open():
     html_begining = """
     <html>
     <head>
-        <link rel="stylesheet" href="newsrn.css">
+        <link rel="stylesheet" href="/webfiles/index.css">
     </head>
     <body>"""
 
@@ -85,7 +85,7 @@ def file_close():
     return html_close
 
 if __name__ == '__main__':
-    html_file = open('/home/dan/Documents/python_projects/newsrn/newsrn.html', 'w')
+    html_file = open('/webFiles/index.html', 'w')
     html_file.write(file_open() + smh() + economist() + file_close())
     html_file.close()
-    webbrowser.open_new_tab('/home/dan/Documents/python_projects/newsrn/newsrn.html')
+    webbrowser.open_new_tab('/webFiles/index.html')
